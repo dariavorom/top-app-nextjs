@@ -1,12 +1,13 @@
 .star svg {
-    margin-right: 5px;
-    outline-color: var(--primary);
+	margin-right: 5px;
+
+	outline-color: var(--primary);
 }
 
 .filled svg {
-    fill: var(--primary);
+	fill: var(--primary);
 }
 
 .editable {
-    cursor: pointer;
+	cursor: pointer;
 }
