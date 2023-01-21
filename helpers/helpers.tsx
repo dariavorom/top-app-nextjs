@@ -13,3 +13,9 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
   { route: 'products', name: 'Продукты', icon: <ProductsIcon />, id: TopLevelCategory.Products },
 ];
+
+export const priceRu = (price: number): string => // разбивка числа на тысячные (добавить пробел через каждые три цифры)
+  price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/, ' ')
+    .concat(' ₽');

@@ -10,6 +10,7 @@
 		"indentation": [
 			"tab"
 		],
-		"color-hex-case": "lower"
+		"color-hex-case": "lower",
+		"selector-class-pattern": null
 	}
 }
