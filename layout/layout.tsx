@@ -3,12 +3,12 @@ import { FunctionComponent } from 'react';
 import { Footer } from './footer/footer';
 import { Header } from './header/header';
 import { Sidebar } from './sidebar/sidebar';
+import { UpButton } from '../components';
 
 import { LayoutProps } from './layout.props';
 import { AppContextProvider, IAppContext } from '../context/app.context';
 
 import styles from './layout.module.css';
-
 
 const Layout = ({ children }: LayoutProps) => {
   return (
@@ -17,6 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Sidebar className={styles.sidebar} />
       <div className={styles.body}>{children}</div>
       <Footer className={styles.footer} />
+      <UpButton />
     </div>
   );
 };

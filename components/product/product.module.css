@@ -4,6 +4,7 @@
 
 	margin-top: 30px;
 	padding: 30px;
+	position: relative;
 }
 
 .logo {
@@ -51,6 +52,8 @@
 
 .advBlock {
 	grid-column: middle / end;
+	font-size: 16px;
+	line-height: 22px;
 }
 
 .logo img {
@@ -101,11 +104,6 @@
 	margin-left: 20px;
 }
 
-.advBlock {
-	font-size: 16px;
-	line-height: 22px;
-}
-
 .advTitle {
 	margin-bottom: 5px;
 
@@ -149,18 +147,7 @@
 }
 
 .reviews {
-	/* margin-top: -30px; */
-}
-
-.closed {
 	overflow: hidden;
-
-	max-height: 0;
-	padding: 0;
-}
-
-.opened {
-	max-height: auto;
 	padding: 30px;
 }
 

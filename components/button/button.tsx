@@ -1,5 +1,7 @@
-import { ButtonProps } from './button.props';
+import { motion } from 'framer-motion';
 import classNames from 'classnames';
+
+import { ButtonProps } from './button.props';
 
 import Arrow from './assets/arrow.svg';
 
@@ -22,9 +24,13 @@ export const Button = ({
   });
 
   return (
-    <button className={buttonClassName} {...props}>
+    <motion.button whileHover={{ scale: 1.05 }} className={buttonClassName} {...props}>
       {children}
-      {arrow !== 'none' && <span className={arrowClassName}><Arrow /></span>}
-    </button>
+      {arrow !== 'none' && (
+        <span className={arrowClassName}>
+          <Arrow />
+        </span>
+      )}
+    </motion.button>
   );
 };

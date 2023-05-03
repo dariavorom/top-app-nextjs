@@ -12,3 +12,5 @@ export * from './search/search';
 export * from './product/product';
 export * from './review/review';
 export * from './review-form/review-form';
+export * from './up-button/up-button';
+export * from './button-icon/button-icon';
