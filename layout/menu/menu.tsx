@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { AppConext } from '../../context/app.context';
+import { AppContext } from '../../context/app.context';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { PageItem } from '../../interfaces/menu.interface';
 
 import styles from './menu.module.css';
 
 export const Menu = () => {
-  const { menu, setMenu, firstCategory } = useContext(AppConext);
+  const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
 
   const openSecondLevel = (secondCategory: string) => {
