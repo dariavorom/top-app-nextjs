@@ -1,12 +1,13 @@
-import { Advantages, HhData, Htag, Sort, Tag } from '../../components';
-import { TopPageComponentProps } from './top-page-component.props';
+import { useEffect, useReducer } from 'react';
 
+
+import { TopPageComponentProps } from './top-page-component.props';
 import { TopLevelCategory } from '../../interfaces/page.interface';
+import { Advantages, HhData, Htag, Product, Sort, Tag } from '../../components';
+import { SortEnum } from '../../components/sort/sort.props';
+import { sortReducer } from './sort.reducer';
 
 import styles from './top-page-component.module.css';
-import { SortEnum } from '../../components/sort/sort.props';
-import { useReducer } from 'react';
-import { sortReducer } from './sort.reducer';
 
 export const TopPageComponent = ({ firstCategory, page, products }: TopPageComponentProps) => {
   const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, {
@@ -17,6 +18,10 @@ export const TopPageComponent = ({ firstCategory, page, products }: TopPageCompo
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
+
+  useEffect(() => {
+    dispatchSort({ type: 'reset', initialState: products });
+  }, [products]);
 
   return (
     <div className={styles.wrapper}>
@@ -29,7 +34,7 @@ export const TopPageComponent = ({ firstCategory, page, products }: TopPageCompo
         )}
         <Sort sort={sort} setSort={setSort} />
       </div>
-      <div>{sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}</div>
+      <div>{sortedProducts && sortedProducts.map((p) => <Product key={p._id} product={p} />)}</div>
       <div className={styles.hhTitle}>
         <Htag tag='h2'>Вакансии - {page.category}</Htag>
         <Tag color='red' size='m'>

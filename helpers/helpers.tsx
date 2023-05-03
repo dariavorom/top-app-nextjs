@@ -14,8 +14,17 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'products', name: 'Продукты', icon: <ProductsIcon />, id: TopLevelCategory.Products },
 ];
 
-export const priceRu = (price: number): string => // разбивка числа на тысячные (добавить пробел через каждые три цифры)
+export const priceRu = (
+  price: number,
+): string => // разбивка числа на тысячные (добавить пробел через каждые три цифры)
   price
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/, ' ')
     .concat(' ₽');
+
+
+    //склонение слов
+export const declOfNum = (num: number, titles: [string, string, string]): string => {
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[num % 100 > 4 && num % 100 < 20 ? 2 : cases[num % 10 < 5 ? num % 10 : 5]];
+};
