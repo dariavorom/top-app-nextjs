@@ -39,6 +39,7 @@ export const Product = motion(
           behavior: 'smooth',
           block: 'start',
         });
+        reviewRef.current?.focus();
       };
 
       return (
@@ -55,15 +56,23 @@ export const Product = motion(
             </div>
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>
+              <span className='hidden'>Цена</span>
               {priceRu(product.price)}{' '}
               {product.oldPrice && (
-                <Tag color='green'>{priceRu(product.price - product.oldPrice)}</Tag>
+                <Tag color='green'>
+                  <span className='hidden'>Скидка</span>
+                  {priceRu(product.price - product.oldPrice)}
+                </Tag>
               )}
             </div>
             <div className={styles.credit}>
+              <span className='hidden'>Кредит</span>
               {priceRu(product.credit)}/<span className={styles.month}>мес</span>
             </div>
             <div className={styles.rating}>
+              <span className='hidden'>
+                {`рейтинг ${product.reviewAvg ?? product.initialRating}`}
+              </span>
               <Rating rating={product.reviewAvg ?? product.initialRating} />
             </div>
             <div className={styles.tags}>
@@ -73,8 +82,12 @@ export const Product = motion(
                 </Tag>
               ))}
             </div>
-            <div className={styles.priceTitle}>цена</div>
-            <div className={styles.creditTitle}>кредит</div>
+            <div aria-hidden={true} className={styles.priceTitle}>
+              цена
+            </div>
+            <div aria-hidden={true} className={styles.creditTitle}>
+              кредит
+            </div>
             <div className={styles.rateTitle}>
               <a href='#ref' onClick={scrollToReview}>
                 {`${product.reviewCount} ${declOfNum(product.reviewCount, [
@@ -117,6 +130,7 @@ export const Product = motion(
                 appearance='ghost'
                 arrow={isReviewOpened ? 'down' : 'right'}
                 className={styles.reviewButton}
+                aria-expanded={isReviewOpened}
               >
                 Читать отзывы
               </Button>
@@ -127,14 +141,19 @@ export const Product = motion(
             variants={variants}
             initial='hidden'
           >
-            <Card color='blue' className={styles.reviews} ref={reviewRef}>
+            <Card
+              color='blue'
+              className={styles.reviews}
+              ref={reviewRef}
+              tabIndex={isReviewOpened ? 0 : -1}
+            >
               {product.reviews.map((review) => (
                 <Fragment key={review._id}>
                   <Review review={review} />
                   <Divider />
                 </Fragment>
               ))}
-              <ReviewForm productId={product._id} />
+              <ReviewForm productId={product._id} isOpened={isReviewOpened} />
             </Card>
           </motion.div>
         </div>

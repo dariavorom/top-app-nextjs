@@ -3,12 +3,12 @@
 	--white: #fff;
 	--grey: #a4a4a4;
 	--grey-light: #ebebeb;
-	--grey-dark: #787d85;
-	--primary: #7653fc;
+	--grey-dark: #6c7077;
+	--primary: #7351f5;
 	--primary-hover: #5234b4;
 	--red: #de0000;
 	--red-light: #f7abab;
-	--green: #1dc47e;
+	--green: #127a4e;
 	--green-light: #c8f8e4;
 	--font-family-default: "Noto Sans", sans-serif;
 }
@@ -38,6 +38,13 @@ h1,
 h2,
 h3 {
 	margin: 0;
+}
+
+.hidden {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	position: absolute;
 }
 
 @media (prefers-color-scheme: dark) {

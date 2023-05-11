@@ -54,6 +54,8 @@
 	right: 20px;
 
 	cursor: pointer;
+	border: none;
+	background: none;
 }
 
 .error .closeIcon path {

@@ -31,7 +31,7 @@ export const Search = ({ className, ...props }: SearchProps) => {
   };
 
   return (
-    <div className={classNames(className, styles.search)} {...props}>
+    <form className={classNames(className, styles.search)} {...props} role='search'>
       <Input
         placeholder='Поиск...'
         value={search}
@@ -39,9 +39,9 @@ export const Search = ({ className, ...props }: SearchProps) => {
         className={styles.input}
         onKeyDown={handleKeyDown}
       />
-      <Button className={styles.button} onClick={goToSearch} appearance='primary'>
+      <Button aria-label='Искать по сайту' className={styles.button} onClick={goToSearch} appearance='primary'>
         <SearchIcon />
       </Button>
-    </div>
+    </form>
   );
 };
