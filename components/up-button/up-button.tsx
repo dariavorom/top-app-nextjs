@@ -28,7 +28,7 @@ export const UpButton = () => {
       initial={{ opacity: 0 }}
       className={styles.upButton}
     >
-      <ButtonIcon onClick={scrollToTop} appearance='primary' icon='up' />
+      <ButtonIcon onClick={scrollToTop} appearance='primary' icon='up' aria-label='наверх' />
     </motion.div>
   );
 };

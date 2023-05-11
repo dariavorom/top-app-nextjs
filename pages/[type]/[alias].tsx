@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { GetStaticPropsContext, GetStaticProps, GetStaticPaths } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import Head from 'next/head';
 
 import { API } from '../../helpers/api';
 import { firstLevelMenu } from '../../helpers/helpers';
@@ -9,9 +10,25 @@ import { TopLevelCategory, TopPageModel } from '../../interfaces/page.interface'
 import { ProductModel } from '../../interfaces/product.interface';
 import { withLayout } from '../../layout/layout';
 import { TopPageComponent } from '../../page-components';
+import { Error404 } from '../404';
 
-function TopPage({ firstCategory, menu, page, products }: TopPageProps) {
-  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />;
+function TopPage({ firstCategory, page, products }: TopPageProps) {
+  if (!page || !products) {
+    return <Error404 />;
+  }
+
+  return (
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name='description' content={page.metaDescription} />
+        <meta property='og:title' content={page.metaTitle} />
+        <meta property='og:description' content={page.metaDescription} />
+        <meta property='og:type' content='article' />
+      </Head>
+      <TopPageComponent firstCategory={firstCategory} page={page} products={products} />
+    </>
+  );
 }
 
 export default withLayout(TopPage);
@@ -28,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

@@ -27,9 +27,12 @@
 	fill: var(--primary);
 }
 
-.firstLevelList, .secondBlock, .secondLevelBlock {
-	list-style: none;
+.firstLevelList,
+.secondBlock,
+.secondLevelBlock {
 	padding: 0;
+
+	list-style: none;
 }
 
 .secondBlock {
@@ -41,18 +44,18 @@
 
 .secondLevel {
 	margin-bottom: 10px;
+	padding: 0;
 
 	cursor: pointer;
 	text-transform: uppercase;
 
 	color: var(--grey-dark);
+	border: none;
+	outline-offset: -1px;
+	background: none;
 
 	font-size: 12px;
 	font-weight: 300;
-	outline-offset: -1px;
-	border: none;
-	background: none;
-	padding: 0;
 }
 
 .secondLevelBlock {
@@ -68,10 +71,10 @@
 	transition: color 0.2s ease-in-out;
 
 	color: var(--grey-dark);
+	outline-offset: -1px;
 
 	font-size: 14px;
 	font-weight: 500;
-	outline-offset: -1px;
 }
 
 .thirdLevel:hover,

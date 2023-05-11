@@ -11,6 +11,15 @@
 			"tab"
 		],
 		"color-hex-case": "lower",
-		"selector-class-pattern": null
+		"selector-class-pattern": null,
+		"declaration-block-no-redundant-longhand-properties": [
+			true,
+			{
+				"ignoreShorthands": [
+					"grid-template"
+				]
+			}
+		],
+		"max-line-length": null
 	}
 }
